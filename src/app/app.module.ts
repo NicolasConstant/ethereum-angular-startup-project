@@ -10,12 +10,10 @@ import { Web3Guard } from './guards/web3.guard';
 import { WEB3_PROVIDERS } from './services/web3.service';
 
 const appRoutes: Routes = [
+{ path: '', component: EthContentComponent, canActivate: [Web3Guard] },
 { path: 'eth-content', component: EthContentComponent, canActivate: [Web3Guard] },
-{ path: 'web3-not-found', component: Web3NotFoundComponent },
-{ path: '',
-redirectTo: '/eth-content',
-pathMatch: 'full'
-},
+{ path: 'web3-not-found', component: Web3NotFoundComponent }
+//{ path: '', redirectTo: '/eth-content', pathMatch: 'full' }
 ];
 
 @NgModule({
