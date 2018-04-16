@@ -17,14 +17,14 @@ export class Web3Guard implements CanActivate {
 
     const ethClient = this.web3Service.getEth();
     if(!ethClient){
-      this.router.navigate(["/web3-not-found"]);
+      this.router.navigate(["/web3-not-found"], { queryParams: { locked: 0 } });
       return false;
     }
 
     return this.web3Service.isLocked(ethClient)
      .then((isLocked) => {
      	if(isLocked){
-     		this.router.navigate(["/web3-not-found"]);
+     		this.router.navigate(["/web3-not-found"], { queryParams: { locked: 1 } });
      	}
      	return !isLocked;
      });
